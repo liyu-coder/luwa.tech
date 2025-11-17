@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { TypeAnimation } from 'react-type-animation';
 import logo from './image1.png';
 
 const Hero: React.FC = () => {
@@ -8,10 +9,34 @@ const Hero: React.FC = () => {
       <div className="grid md:grid-cols-2 gap-12 items-center">
         <div className="text-center md:text-left">
           <h1 className="text-4xl md:text-6xl font-extrabold mb-4 leading-tight">
-            Luwa Tesemma
+            <TypeAnimation
+              sequence={[
+                'Luwa Tesemma',
+                1000,
+                'Luwa Tesemma',
+                1000
+              ]}
+              wrapper="span"
+              speed={50}
+              style={{ display: 'inline-block' }}
+              repeat={Infinity}
+            />
           </h1>
-          <h2 className="text-2xl md:text-3xl font-semibold text-cyan-400 mb-6">
-            Senior Software Engineer
+          <h2 className="text-2xl md:text-3xl font-semibold text-cyan-400 mb-6 h-12">
+            <TypeAnimation
+              sequence={[
+                'Senior Software Engineer',
+                2000,
+                'Full Stack Developer',
+                2000,
+                'Tech Enthusiast',
+                2000
+              ]}
+              wrapper="span"
+              speed={50}
+              style={{ display: 'inline-block' }}
+              repeat={Infinity}
+            />
           </h2>
           <p className="text-lg text-gray-400 mb-8 max-w-xl mx-auto md:mx-0">
             I build robust, scalable, and efficient software solutions. Passionate about system design, clean code, and creating impactful technology.
