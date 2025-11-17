@@ -13,12 +13,11 @@ const Footer: React.FC = () => {
     <footer className="bg-gray-900 border-t border-gray-800 py-8">
       <div className="container mx-auto px-6 md:px-12 text-center text-gray-400">
         <div className="flex justify-center space-x-6 mb-4">
-            <SocialLink href="#" icon={<FaGithub size={24} />} />
-            <SocialLink href="#" icon={<FaLinkedin size={24} />} />
-            <SocialLink href="#" icon={<FaTwitter size={24} />} />
+            <SocialLink href="https://github.com/liyu-coder" icon={<FaGithub size={24} />} />
+            
+      
         </div>
         <p>&copy; {new Date().getFullYear()} Luwa Tesemma. All rights reserved.</p>
-        <p className="text-sm mt-1">Built with React & Tailwind CSS</p>
       </div>
     </footer>
   );
