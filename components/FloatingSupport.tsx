@@ -1,69 +1,111 @@
 import React, { useState } from 'react';
-import { FaWhatsapp, FaTelegramPlane } from 'react-icons/fa';
-import { FiMessageCircle, FiX } from 'react-icons/fi';
+import { FaWhatsapp, FaTelegramPlane, FaPhoneAlt } from 'react-icons/fa';
+
+interface SupportItem {
+  id: string;
+  name: string;
+  label: string;
+  sublabel: string;
+  href: string;
+  icon: React.ReactNode;
+  bgColor: string;
+  hoverColor: string;
+  shadowColor: string;
+}
+
+const supportChannels: SupportItem[] = [
+  {
+    id: 'whatsapp',
+    name: 'WhatsApp',
+    label: 'Chat on WhatsApp',
+    sublabel: '+251 916 604 254',
+    href: 'https://wa.me/251916604254',
+    icon: <FaWhatsapp size={24} className="text-white drop-shadow" />,
+    bgColor: 'bg-[#25D366]',
+    hoverColor: 'hover:bg-[#20bd5a]',
+    shadowColor: 'shadow-[#25D366]/40',
+  },
+  {
+    id: 'telegram',
+    name: 'Telegram',
+    label: 'Telegram Support',
+    sublabel: '@Luwa307',
+    href: 'https://t.me/Luwa307',
+    icon: <FaTelegramPlane size={22} className="text-white drop-shadow -translate-x-0.5 translate-y-0.5" />,
+    bgColor: 'bg-[#229ED9]',
+    hoverColor: 'hover:bg-[#1d8bc0]',
+    shadowColor: 'shadow-[#229ED9]/40',
+  },
+  {
+    id: 'phone',
+    name: 'Phone Call',
+    label: 'Direct Phone Call',
+    sublabel: '+251 916 604 254',
+    href: 'tel:+251916604254',
+    icon: <FaPhoneAlt size={19} className="text-white drop-shadow" />,
+    bgColor: 'bg-[#EA580C]',
+    hoverColor: 'hover:bg-[#c2410c]',
+    shadowColor: 'shadow-[#EA580C]/40',
+  },
+];
 
 const FloatingSupport: React.FC = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [hoveredId, setHoveredId] = useState<string | null>(null);
 
   return (
-    <div className="fixed bottom-6 left-6 z-40 flex flex-col items-start select-none">
-      {/* Expanded Quick Support Menu */}
-      {isOpen && (
-        <div className="mb-3 p-3 bg-slate-900/95 backdrop-blur-md border border-slate-700/80 rounded-2xl shadow-2xl flex flex-col gap-2.5 animate-fadeIn min-w-[210px]">
-          <div className="px-1.5 py-0.5 border-b border-slate-800 pb-2">
-            <p className="text-xs font-bold text-white flex items-center gap-1.5">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-              <span>Instant Support</span>
-            </p>
-            <p className="text-[11px] text-slate-400">Available on mobile & chat</p>
+    <aside 
+      aria-label="Direct 24/7 Support Channels"
+      className="fixed bottom-6 right-4 sm:right-6 z-50 flex flex-col items-end gap-3.5 select-none"
+    >
+      {supportChannels.map((channel, index) => {
+        const isHovered = hoveredId === channel.id;
+
+        return (
+          <div
+            key={channel.id}
+            className="relative flex items-center justify-end group"
+            onMouseEnter={() => setHoveredId(channel.id)}
+            onMouseLeave={() => setHoveredId(null)}
+          >
+            {/* Interactive Tooltip Card on Left */}
+            <div
+              className={`absolute right-14 sm:right-16 whitespace-nowrap transition-all duration-300 pointer-events-none ${
+                isHovered
+                  ? 'opacity-100 translate-x-0 scale-100'
+                  : 'opacity-0 translate-x-2 scale-95'
+              }`}
+            >
+              <div className="bg-slate-900/95 backdrop-blur-md text-white border border-slate-700/80 px-3.5 py-1.5 rounded-xl shadow-2xl flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                <div className="text-right">
+                  <p className="text-xs font-bold text-white">{channel.label}</p>
+                  <p className="text-[10px] text-cyan-300 font-mono">{channel.sublabel}</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Circular Floating Action Button */}
+            <a
+              href={channel.href}
+              target={channel.href.startsWith('tel:') ? '_self' : '_blank'}
+              rel="noopener noreferrer"
+              aria-label={`${channel.name}: ${channel.sublabel}`}
+              className={`relative w-12 h-12 sm:w-13 sm:h-13 rounded-full flex items-center justify-center ${channel.bgColor} ${channel.hoverColor} shadow-lg ${channel.shadowColor} transition-all duration-300 transform hover:scale-110 active:scale-95 focus:outline-none focus:ring-2 focus:ring-white/50`}
+            >
+              {/* Subtle Breathing Ring for WhatsApp */}
+              {index === 0 && (
+                <span className="absolute -inset-1 rounded-full bg-[#25D366] opacity-30 animate-ping pointer-events-none"></span>
+              )}
+
+              {/* Icon */}
+              <div className="relative z-10 flex items-center justify-center">
+                {channel.icon}
+              </div>
+            </a>
           </div>
-
-          <a
-            href="https://wa.me/251916604254"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2.5 p-2 rounded-xl bg-emerald-950/70 hover:bg-emerald-900/80 border border-emerald-500/40 text-emerald-300 text-xs font-semibold transition-all group"
-          >
-            <div className="w-7 h-7 rounded-lg bg-emerald-500/20 flex items-center justify-center text-emerald-400 group-hover:scale-110 transition-transform">
-              <FaWhatsapp size={16} />
-            </div>
-            <div>
-              <p className="text-white text-xs font-bold">WhatsApp</p>
-              <p className="text-[10px] text-emerald-400">+251 916 604 254</p>
-            </div>
-          </a>
-
-          <a
-            href="https://t.me/Luwa307"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2.5 p-2 rounded-xl bg-sky-950/70 hover:bg-sky-900/80 border border-sky-500/40 text-sky-300 text-xs font-semibold transition-all group"
-          >
-            <div className="w-7 h-7 rounded-lg bg-sky-500/20 flex items-center justify-center text-sky-400 group-hover:scale-110 transition-transform">
-              <FaTelegramPlane size={15} />
-            </div>
-            <div>
-              <p className="text-white text-xs font-bold">Telegram</p>
-              <p className="text-[10px] text-sky-400">@Luwa307</p>
-            </div>
-          </a>
-        </div>
-      )}
-
-      {/* Floating Trigger Pill */}
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        aria-label="Direct Support Contact"
-        className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-slate-900/90 hover:bg-slate-800 backdrop-blur-md border border-cyan-500/40 text-cyan-300 shadow-xl shadow-cyan-500/15 text-xs font-bold transition-all duration-300 transform hover:scale-105 group"
-      >
-        <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
-        <span className="w-2 h-2 rounded-full bg-emerald-400 -ml-4"></span>
-        <span className="text-slate-200 group-hover:text-cyan-300 transition-colors">
-          Support / Chat
-        </span>
-        {isOpen ? <FiX size={15} className="text-slate-400" /> : <FiMessageCircle size={15} className="text-cyan-400" />}
-      </button>
-    </div>
+        );
+      })}
+    </aside>
   );
 };
 

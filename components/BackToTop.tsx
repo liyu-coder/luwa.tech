@@ -30,9 +30,10 @@ const BackToTop: React.FC = () => {
     <button
       onClick={scrollToTop}
       aria-label="Scroll back to top"
-      className="fixed bottom-6 right-6 z-40 p-3 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold rounded-full shadow-lg shadow-cyan-500/25 transition-all duration-300 transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-cyan-400"
+      title="Scroll to Top"
+      className="fixed bottom-52 right-4 sm:right-6 z-40 w-11 h-11 bg-slate-800/90 hover:bg-cyan-500 text-slate-300 hover:text-slate-950 font-bold rounded-full shadow-lg border border-slate-700/80 hover:border-cyan-400 flex items-center justify-center transition-all duration-300 transform hover:scale-110 focus:outline-none"
     >
-      <FiArrowUp size={20} />
+      <FiArrowUp size={18} />
     </button>
   );
 };
