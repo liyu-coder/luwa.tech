@@ -107,11 +107,8 @@ const Footer: React.FC = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+        <div className="pt-8 flex items-center justify-center text-center text-xs text-slate-500">
           <p>&copy; {new Date().getFullYear()} Luwa Tesemma. All rights reserved.</p>
-          <p className="flex items-center gap-2">
-            <span>Built with React, TypeScript & Tailwind CSS</span>
-          </p>
         </div>
       </div>
     </footer>
