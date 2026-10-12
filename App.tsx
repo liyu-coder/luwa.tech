@@ -11,6 +11,7 @@ import Footer from './components/Footer';
 import ProjectModal from './components/ProjectModal';
 import ResumeModal from './components/ResumeModal';
 import BackToTop from './components/BackToTop';
+import FloatingSupport from './components/FloatingSupport';
 import { Project } from './types';
 
 const App: React.FC = () => {
@@ -54,6 +55,7 @@ const App: React.FC = () => {
         onClose={() => setIsResumeOpen(false)} 
       />
       <BackToTop />
+      <FloatingSupport />
     </div>
   );
 };

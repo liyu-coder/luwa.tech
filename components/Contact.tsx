@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { FiMail, FiMapPin, FiSend, FiCheck, FiCopy, FiMessageSquare } from 'react-icons/fi';
-import { FaGithub, FaLinkedin } from 'react-icons/fa';
+import { FiMail, FiMapPin, FiSend, FiCheck, FiCopy, FiMessageSquare, FiPhoneCall } from 'react-icons/fi';
+import { FaGithub, FaLinkedin, FaWhatsapp, FaTelegramPlane } from 'react-icons/fa';
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -10,12 +10,12 @@ const Contact: React.FC = () => {
     message: '',
   });
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
-  const [copied, setCopied] = useState(false);
+  const [copiedType, setCopiedType] = useState<string | null>(null);
 
-  const handleCopyEmail = () => {
-    navigator.clipboard.writeText('luwatesemma@gmail.com');
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2500);
+  const handleCopy = (text: string, type: string) => {
+    navigator.clipboard.writeText(text);
+    setCopiedType(type);
+    setTimeout(() => setCopiedType(null), 2500);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -48,23 +48,103 @@ const Contact: React.FC = () => {
         </h2>
         <div className="w-20 h-1 bg-gradient-to-r from-cyan-500 to-blue-500 mx-auto rounded-full"></div>
         <p className="text-slate-400 text-sm md:text-base max-w-xl mx-auto mt-4">
-          Whether you need a senior software engineer for full-stack systems, core banking consultation, or a high-velocity project, I'd love to connect.
+          Whether you need a senior software engineer for full-stack systems, core banking consultation, or immediate project support, connect directly with me anytime.
         </p>
       </div>
 
       <div className="grid lg:grid-cols-12 gap-10 max-w-6xl mx-auto">
-        {/* Left Column: Direct Contact Info */}
+        {/* Left Column: Direct Contact & Instant Support Channels */}
         <div className="lg:col-span-5 space-y-6">
-          <div className="glass-panel p-6 md:p-8 rounded-2xl space-y-6 border border-slate-800">
+          <div className="glass-panel p-6 md:p-8 rounded-2xl space-y-5 border border-slate-800">
             <h3 className="text-xl font-bold text-white flex items-center gap-2">
               <FiMessageSquare className="text-cyan-400" />
-              <span>Direct Channels</span>
+              <span>Direct Support & Channels</span>
             </h3>
+
+            {/* WhatsApp Support Card */}
+            <div className="bg-slate-800/60 hover:bg-slate-800/90 transition-colors p-4 rounded-xl border border-emerald-500/30 flex items-center justify-between gap-3 group">
+              <div className="flex items-center gap-3 overflow-hidden">
+                <div className="w-10 h-10 rounded-lg bg-emerald-950 border border-emerald-600/40 flex items-center justify-center text-emerald-400 flex-shrink-0 group-hover:scale-105 transition-transform">
+                  <FaWhatsapp size={22} />
+                </div>
+                <div className="overflow-hidden">
+                  <div className="flex items-center gap-2">
+                    <p className="text-xs text-emerald-400 font-semibold uppercase tracking-wider">WhatsApp Support</p>
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                  </div>
+                  <a
+                    href="https://wa.me/251916604254"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm font-bold text-white hover:text-emerald-400 transition-colors truncate block"
+                  >
+                    +251 916 604 254
+                  </a>
+                </div>
+              </div>
+              <div className="flex items-center space-x-1.5 flex-shrink-0">
+                <button
+                  onClick={() => handleCopy('+251916604254', 'whatsapp')}
+                  className="p-2 text-slate-400 hover:text-emerald-400 hover:bg-slate-700/60 rounded-lg transition-colors"
+                  title="Copy WhatsApp number"
+                >
+                  {copiedType === 'whatsapp' ? <FiCheck className="text-emerald-400" size={17} /> : <FiCopy size={17} />}
+                </button>
+                <a
+                  href="https://wa.me/251916604254"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-2.5 py-1 text-xs font-semibold bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg transition-colors"
+                >
+                  Chat
+                </a>
+              </div>
+            </div>
+
+            {/* Telegram Support Card */}
+            <div className="bg-slate-800/60 hover:bg-slate-800/90 transition-colors p-4 rounded-xl border border-sky-500/30 flex items-center justify-between gap-3 group">
+              <div className="flex items-center gap-3 overflow-hidden">
+                <div className="w-10 h-10 rounded-lg bg-sky-950 border border-sky-600/40 flex items-center justify-center text-sky-400 flex-shrink-0 group-hover:scale-105 transition-transform">
+                  <FaTelegramPlane size={20} />
+                </div>
+                <div className="overflow-hidden">
+                  <div className="flex items-center gap-2">
+                    <p className="text-xs text-sky-400 font-semibold uppercase tracking-wider">Telegram Support</p>
+                    <span className="w-1.5 h-1.5 rounded-full bg-sky-400 animate-pulse"></span>
+                  </div>
+                  <a
+                    href="https://t.me/Luwa307"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm font-bold text-white hover:text-sky-400 transition-colors truncate block"
+                  >
+                    @Luwa307
+                  </a>
+                </div>
+              </div>
+              <div className="flex items-center space-x-1.5 flex-shrink-0">
+                <button
+                  onClick={() => handleCopy('@Luwa307', 'telegram')}
+                  className="p-2 text-slate-400 hover:text-sky-400 hover:bg-slate-700/60 rounded-lg transition-colors"
+                  title="Copy Telegram username"
+                >
+                  {copiedType === 'telegram' ? <FiCheck className="text-emerald-400" size={17} /> : <FiCopy size={17} />}
+                </button>
+                <a
+                  href="https://t.me/Luwa307"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-2.5 py-1 text-xs font-semibold bg-sky-600 hover:bg-sky-500 text-white rounded-lg transition-colors"
+                >
+                  Open
+                </a>
+              </div>
+            </div>
 
             {/* Email Card with Copy Button */}
             <div className="bg-slate-800/60 p-4 rounded-xl border border-slate-700/60 flex items-center justify-between gap-3">
               <div className="flex items-center gap-3 overflow-hidden">
-                <div className="w-10 h-10 rounded-lg bg-cyan-950 flex items-center justify-center text-cyan-400 flex-shrink-0">
+                <div className="w-10 h-10 rounded-lg bg-cyan-950 border border-cyan-800/50 flex items-center justify-center text-cyan-400 flex-shrink-0">
                   <FiMail size={18} />
                 </div>
                 <div className="overflow-hidden">
@@ -78,47 +158,56 @@ const Contact: React.FC = () => {
                 </div>
               </div>
               <button
-                onClick={handleCopyEmail}
-                className="p-2 text-slate-400 hover:text-cyan-400 hover:bg-slate-700 rounded-lg transition-colors flex-shrink-0"
+                onClick={() => handleCopy('luwatesemma@gmail.com', 'email')}
+                className="p-2 text-slate-400 hover:text-cyan-400 hover:bg-slate-700/60 rounded-lg transition-colors flex-shrink-0"
                 title="Copy email address"
               >
-                {copied ? <FiCheck className="text-emerald-400" size={18} /> : <FiCopy size={18} />}
+                {copiedType === 'email' ? <FiCheck className="text-emerald-400" size={18} /> : <FiCopy size={18} />}
               </button>
             </div>
 
-            {/* Location Card */}
-            <div className="bg-slate-800/60 p-4 rounded-xl border border-slate-700/60 flex items-center gap-3">
-              <div className="w-10 h-10 rounded-lg bg-cyan-950 flex items-center justify-center text-cyan-400 flex-shrink-0">
-                <FiMapPin size={18} />
+            {/* Location & Direct Phone */}
+            <div className="bg-slate-800/60 p-4 rounded-xl border border-slate-700/60 flex items-center justify-between gap-3">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-lg bg-slate-800 flex items-center justify-center text-cyan-400 flex-shrink-0">
+                  <FiMapPin size={18} />
+                </div>
+                <div>
+                  <p className="text-xs text-slate-400">Location</p>
+                  <p className="text-sm font-semibold text-white">
+                    Addis Ababa, Ethiopia (Remote Worldwide)
+                  </p>
+                </div>
               </div>
-              <div>
-                <p className="text-xs text-slate-400">Location & Availability</p>
-                <p className="text-sm font-semibold text-white">
-                  Addis Ababa, Ethiopia (Open to Remote Worldwide)
-                </p>
-              </div>
+              <a
+                href="tel:+251916604254"
+                className="p-2 text-slate-400 hover:text-cyan-400 hover:bg-slate-700/60 rounded-lg transition-colors"
+                title="Direct phone call"
+              >
+                <FiPhoneCall size={18} />
+              </a>
             </div>
 
-            {/* Socials */}
-            <div>
-              <p className="text-xs text-slate-400 mb-3">Professional Profiles</p>
+            {/* Socials & Profiles */}
+            <div className="pt-2">
+              <p className="text-xs text-slate-400 mb-3">Other Profiles</p>
               <div className="flex gap-3">
                 <a
                   href="https://github.com/liyu-coder"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-800/90 hover:bg-slate-700 text-slate-300 hover:text-white transition-colors border border-slate-700 text-sm font-medium"
+                  className="flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-800/90 hover:bg-slate-700 text-slate-300 hover:text-white transition-colors border border-slate-700 text-xs font-semibold"
                 >
-                  <FaGithub size={18} />
+                  <FaGithub size={16} />
                   <span>GitHub</span>
                 </a>
                 <a
                   href="https://linkedin.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-800/90 hover:bg-slate-700 text-slate-300 hover:text-white transition-colors border border-slate-700 text-sm font-medium"
+                  className="flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-800/90 hover:bg-slate-700 text-slate-300 hover:text-white transition-colors border border-slate-700 text-xs font-semibold"
                 >
-                  <FaLinkedin size={18} />
+                  <FaLinkedin size={16} />
                   <span>LinkedIn</span>
                 </a>
               </div>

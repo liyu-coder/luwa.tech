@@ -1,6 +1,6 @@
 import React from 'react';
 import { FiX, FiDownload, FiMail, FiMapPin, FiBriefcase, FiAward, FiCheckCircle } from 'react-icons/fi';
-import { FaGithub, FaLinkedin } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaWhatsapp, FaTelegramPlane } from 'react-icons/fa';
 
 interface ResumeModalProps {
   isOpen: boolean;
@@ -54,6 +54,12 @@ const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => {
               <div className="flex flex-wrap items-center gap-4 mt-2 text-xs md:text-sm text-slate-400">
                 <span className="flex items-center gap-1.5"><FiMapPin className="text-cyan-400" /> Addis Ababa, Ethiopia</span>
                 <span className="flex items-center gap-1.5"><FiMail className="text-cyan-400" /> luwatesemma@gmail.com</span>
+                <a href="https://wa.me/251916604254" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 hover:text-emerald-400 transition-colors">
+                  <FaWhatsapp className="text-emerald-400" /> +251 916 604 254
+                </a>
+                <a href="https://t.me/Luwa307" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 hover:text-sky-400 transition-colors">
+                  <FaTelegramPlane className="text-sky-400" /> @Luwa307
+                </a>
                 <span className="flex items-center gap-1.5"><FaGithub className="text-cyan-400" /> github.com/liyu-coder</span>
               </div>
             </div>

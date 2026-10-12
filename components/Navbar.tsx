@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { FiMenu, FiX, FiFileText } from 'react-icons/fi';
-import { FaGithub, FaLinkedin } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaWhatsapp, FaTelegramPlane } from 'react-icons/fa';
 
 interface NavbarProps {
   onOpenResume?: () => void;
@@ -95,7 +95,25 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
         </nav>
 
         {/* Right Action Buttons */}
-        <div className="hidden md:flex items-center space-x-4">
+        <div className="hidden md:flex items-center space-x-3">
+          <a
+            href="https://wa.me/251916604254"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-slate-400 hover:text-emerald-400 transition-colors p-2"
+            title="WhatsApp: +251 916 604 254"
+          >
+            <FaWhatsapp size={19} />
+          </a>
+          <a
+            href="https://t.me/Luwa307"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-slate-400 hover:text-sky-400 transition-colors p-2"
+            title="Telegram: @Luwa307"
+          >
+            <FaTelegramPlane size={19} />
+          </a>
           <a
             href="https://github.com/liyu-coder"
             target="_blank"
@@ -103,7 +121,7 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
             className="text-slate-400 hover:text-cyan-400 transition-colors p-2"
             title="GitHub Profile"
           >
-            <FaGithub size={20} />
+            <FaGithub size={19} />
           </a>
           <a
             href="https://linkedin.com"
@@ -112,7 +130,7 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
             className="text-slate-400 hover:text-cyan-400 transition-colors p-2"
             title="LinkedIn Profile"
           >
-            <FaLinkedin size={20} />
+            <FaLinkedin size={19} />
           </a>
 
           {onOpenResume && (
@@ -170,14 +188,32 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
               </a>
             ))}
             <div className="pt-4 border-t border-slate-800 flex items-center justify-between">
-              <div className="flex space-x-4 text-slate-400">
+              <div className="flex space-x-4 text-slate-400 items-center">
+                <a
+                  href="https://wa.me/251916604254"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-emerald-400 transition-colors"
+                  title="WhatsApp"
+                >
+                  <FaWhatsapp size={22} />
+                </a>
+                <a
+                  href="https://t.me/Luwa307"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-sky-400 transition-colors"
+                  title="Telegram"
+                >
+                  <FaTelegramPlane size={21} />
+                </a>
                 <a
                   href="https://github.com/liyu-coder"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-cyan-400 transition-colors"
                 >
-                  <FaGithub size={22} />
+                  <FaGithub size={21} />
                 </a>
                 <a
                   href="https://linkedin.com"
@@ -185,7 +221,7 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
                   rel="noopener noreferrer"
                   className="hover:text-cyan-400 transition-colors"
                 >
-                  <FaLinkedin size={22} />
+                  <FaLinkedin size={21} />
                 </a>
               </div>
               <a

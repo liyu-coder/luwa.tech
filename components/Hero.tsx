@@ -1,7 +1,7 @@
 import React from 'react';
 import { TypeAnimation } from 'react-type-animation';
 import { FiArrowDown, FiDownload, FiMail, FiMapPin } from 'react-icons/fi';
-import { FaGithub, FaLinkedin } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaWhatsapp, FaTelegramPlane } from 'react-icons/fa';
 import logo from './image1.png';
 
 interface HeroProps {
@@ -91,8 +91,28 @@ const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
           </div>
 
           {/* Social Quick Links */}
-          <div className="flex items-center justify-center lg:justify-start gap-5 mt-8 text-slate-400">
+          <div className="flex items-center justify-center lg:justify-start gap-4 mt-8 text-slate-400">
             <span className="text-xs uppercase tracking-wider text-slate-500 font-mono">Connect:</span>
+            <a
+              href="https://wa.me/251916604254"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-emerald-400 transition-colors p-1"
+              aria-label="WhatsApp (+251916604254)"
+              title="WhatsApp: +251 916 604 254"
+            >
+              <FaWhatsapp size={20} />
+            </a>
+            <a
+              href="https://t.me/Luwa307"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-sky-400 transition-colors p-1"
+              aria-label="Telegram (@Luwa307)"
+              title="Telegram: @Luwa307"
+            >
+              <FaTelegramPlane size={20} />
+            </a>
             <a
               href="https://github.com/liyu-coder"
               target="_blank"

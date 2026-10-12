@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaGithub, FaLinkedin } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaWhatsapp, FaTelegramPlane } from 'react-icons/fa';
 import { FiMail, FiArrowUp } from 'react-icons/fi';
 
 const Footer: React.FC = () => {
@@ -24,11 +24,32 @@ const Footer: React.FC = () => {
             </p>
             <div className="flex items-center space-x-3 text-slate-400">
               <a
+                href="https://wa.me/251916604254"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-9 h-9 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center hover:text-emerald-400 hover:border-emerald-500/50 transition-colors"
+                aria-label="WhatsApp Support (+251916604254)"
+                title="WhatsApp: +251 916 604 254"
+              >
+                <FaWhatsapp size={19} />
+              </a>
+              <a
+                href="https://t.me/Luwa307"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-9 h-9 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center hover:text-sky-400 hover:border-sky-500/50 transition-colors"
+                aria-label="Telegram Support (@Luwa307)"
+                title="Telegram: @Luwa307"
+              >
+                <FaTelegramPlane size={18} />
+              </a>
+              <a
                 href="https://github.com/liyu-coder"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-9 h-9 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center hover:text-cyan-400 hover:border-cyan-500/50 transition-colors"
                 aria-label="GitHub profile"
+                title="GitHub"
               >
                 <FaGithub size={18} />
               </a>
@@ -38,6 +59,7 @@ const Footer: React.FC = () => {
                 rel="noopener noreferrer"
                 className="w-9 h-9 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center hover:text-cyan-400 hover:border-cyan-500/50 transition-colors"
                 aria-label="LinkedIn profile"
+                title="LinkedIn"
               >
                 <FaLinkedin size={18} />
               </a>
@@ -45,6 +67,7 @@ const Footer: React.FC = () => {
                 href="mailto:luwatesemma@gmail.com"
                 className="w-9 h-9 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center hover:text-cyan-400 hover:border-cyan-500/50 transition-colors"
                 aria-label="Email"
+                title="Email: luwatesemma@gmail.com"
               >
                 <FiMail size={18} />
               </a>

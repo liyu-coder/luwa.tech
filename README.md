@@ -73,8 +73,10 @@ npm run preview
 
 ---
 
-## 📬 Contact & Connect
+## 📬 Contact & Direct Support
 
+- **WhatsApp Support**: [+251 916 604 254](https://wa.me/251916604254)
+- **Telegram Support**: [@Luwa307](https://t.me/Luwa307)
 - **Email**: [luwatesemma@gmail.com](mailto:luwatesemma@gmail.com)
 - **GitHub**: [@liyu-coder](https://github.com/liyu-coder)
 - **Location**: Addis Ababa, Ethiopia (Open to Remote Worldwide)
